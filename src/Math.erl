@@ -1,6 +1,6 @@
 % module Math
 -module(math@foreign).
--export([abs/1, acos/1, asin/1, atan/1, atan2/1, ceil/1, cos/1, exp/1, floor/1, trunc/1, log/1, max/1, min/1, pow/1, '%'/1, round/1, sin/1, sqrt/1, tan/1, e/0, ln2/0, ln10/0, log2e/0, log10e/0, pi/0, sqrt1_2/0, sqrt2/0]).
+-export([abs/1, acos/1, asin/1, atan/1, atan2/1, ceil/1, cos/1, exp/1, floor/1, trunc/1, log/1, max/1, min/1, pow/1, remainder/1, round/1, sin/1, sqrt/1, tan/1, e/0, ln2/0, ln10/0, log2e/0, log10e/0, pi/0, sqrt1_2/0, sqrt2/0]).
 
 abs(X) -> erlang:abs(X).
 
@@ -57,7 +57,7 @@ pow(X) ->
     math:pow(X,Y)
   end.
 
-'%'(X) ->
+remainder(X) ->
   fun (Y) ->
     X rem Y
   end.
