@@ -44,7 +44,8 @@ min(X, Y) -> erlang:min(X,Y).
 
 pow(X, Y) -> math:pow(X,Y).
 
-remainder(X, Y) -> X rem Y.
+% Built-in rem works on ints not floats
+remainder(X, Y) -> X - erlang:trunc(X/Y) * Y.
 
 round(X) -> erlang:round(X).
 
