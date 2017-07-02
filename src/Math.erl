@@ -1,5 +1,5 @@
 -module(math@foreign).
--export([abs/1, acos/1, asin/1, atan/1, atan2/2, ceil/1, cos/1, exp/1, floor/1, trunc/1, log/1, max/2, min/2, pow/2, remainder/2, round/1, sin/1, sqrt/1, tan/1, e/0, ln2/0, ln10/0, log2e/0, log10e/0, pi/0, sqrt1_2/0, sqrt2/0]).
+-export([abs/1, acos/1, asin/1, atan/1, atan2/2, ceil/1, cos/1, exp/1, floor/1, trunc/1, log/1, max/2, min/2, pow/2, remainder/2, round/1, sin/1, sqrt/1, tan/1, e/0, ln2/0, ln10/0, log2e/0, log10e/0, pi/0, tau/0, sqrt1_2/0, sqrt2/0]).
 
 abs(X) -> erlang:abs(X).
 
@@ -66,6 +66,8 @@ log2e() -> math:log2(e()).
 log10e() -> math:log10(e()).
 
 pi() -> math:pi().
+
+tau() -> 2 * math:pi().
 
 sqrt1_2() -> math:sqrt(0.5).
 
