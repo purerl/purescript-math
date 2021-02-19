@@ -12,12 +12,12 @@ atan(X) -> math:atan(X).
 atan2(Y, X) -> math:atan2(Y,X).
 
 ceil(X) when X < 0 ->
-    erlang:trunc(X);
+    float(erlang:trunc(X));
 ceil(X) ->
     T = erlang:trunc(X),
     case X - T == 0 of
-        true -> T;
-        false -> T + 1
+        true -> float(T);
+        false -> float(T + 1)
     end.
 
 cos(X) -> math:cos(X).
@@ -27,14 +27,14 @@ exp(X) -> math:exp(X).
 floor(X) when X < 0 ->
     T = erlang:trunc(X),
     case X - T == 0 of
-        true -> T;
-        false -> T - 1
+        true -> float(T);
+        false -> float(T - 1)
     end;
 floor(X) ->
-    erlang:trunc(X).
+    float(erlang:trunc(X)).
 
 
-trunc(X) -> erlang:trunc(X).
+trunc(X) -> float(erlang:trunc(X)).
 
 log(X) -> math:log(X).
 
@@ -47,7 +47,7 @@ pow(X, Y) -> math:pow(X,Y).
 % Built-in rem works on ints not floats
 remainder(X, Y) -> X - erlang:trunc(X/Y) * Y.
 
-round(X) -> erlang:round(X).
+round(X) -> float(erlang:round(X)).
 
 sin(X) -> math:sin(X).
 
