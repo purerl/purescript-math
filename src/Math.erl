@@ -1,5 +1,5 @@
 -module(math@foreign).
--export([abs/1, acos/1, asin/1, atan/1, atan2/2, ceil/1, cos/1, exp/1, floor/1, trunc/1, log/1, max/2, min/2, pow/2, remainder/2, round/1, sin/1, sqrt/1, tan/1, e/0, ln2/0, ln10/0, log2e/0, log10e/0, pi/0, tau/0, sqrt1_2/0, sqrt2/0]).
+-export([abs/1, acos/1, asin/1, atan/1, atan2/2, ceil/1, cos/1, exp/1, floor/1, imul/2, trunc/1, log/1, max/2, min/2, pow/2, remainder/2, round/1, sin/1, sqrt/1, tan/1, e/0, ln2/0, ln10/0, log2e/0, log10e/0, pi/0, tau/0, sqrt1_2/0, sqrt2/0]).
 
 abs(X) -> erlang:abs(X).
 
@@ -33,6 +33,12 @@ floor(X) when X < 0 ->
 floor(X) ->
     float(erlang:trunc(X)).
 
+imul(A,B) ->
+    AH = (A bsr 16) band 16#ffff,
+    AL = A band 16#ffff,
+    BH = (B bsr 16) band 16#ffff,
+    BL = B band 16#ffff,
+    (AL * BL + ((AH * BL + AL * BH) bsl 16)) band 16#ffffffff.
 
 trunc(X) -> float(erlang:trunc(X)).
 
@@ -72,3 +78,4 @@ tau() -> 2 * math:pi().
 sqrt1_2() -> math:sqrt(0.5).
 
 sqrt2() -> math:sqrt(2).
+
